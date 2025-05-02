@@ -2,7 +2,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./typescript-fetch/js/index.ts",
+  entry: "./src/js/index.tsx",
   output: {
     path: `${__dirname}/dist/`,
     filename: 'bundle.js',
@@ -22,8 +22,8 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
-        //拡張子tsの場合
-        test: /\.ts$/,
+        //拡張子ts、tsxの場合
+        test: /(\.ts|\.tsx)$/,
         //TypeScriptをコンパイルするためのts-loaderを使用
         use: "ts-loader",
       }
@@ -31,12 +31,12 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: "./typescript-fetch/index.html",
+      template: "./src/index.html",
     }),
     new MiniCssExtractPlugin(),
   ],
   resolve: {
-    //import文で.tsファイルを指定できるようにする 書き方：拡張子を配列で指定する
-    extensions: [".ts", ".js"],
+    //import文で.ts,.tsxファイルを指定できるようにする 書き方：拡張子を配列で指定する
+    extensions: [".tsx", ".ts", ".js"],
   },
 };
