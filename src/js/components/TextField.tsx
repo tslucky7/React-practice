@@ -10,7 +10,7 @@ type Props = {
 export const TextField = ({ label, value, onChange, type }: Props) => {
   return (
     <>
-      <label htmlFor="">タスク名</label>
+      <label htmlFor="">{label}</label>
       <input
         type={type}
         value={value}
