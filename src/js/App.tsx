@@ -3,7 +3,8 @@ import { TodoList } from "./components/TodoList";
 import { Heading } from "./components/Heading";
 import { TextField } from "./components/TextField";
 
-type Todo = {
+export type Todo = {
+  id: number;
   task: string;
   deadline: string;
   person: string;
@@ -16,7 +17,7 @@ export const App = () => {
   const [newPerson, setNewPerson] = React.useState<string>("");
 
   const addNewTodo = () => {
-    setTodoList((prev) => [...prev, {task: newTask, deadline: newDeadline, person: newPerson}]);
+    setTodoList((prev) => [...prev, {id: Date.now(), task: newTask, deadline: newDeadline, person: newPerson}]);
   }
 
   return (
@@ -25,11 +26,8 @@ export const App = () => {
       <TextField label="タスク名" value={newTask} onChange={setNewTask} type="text" />
       <TextField label="締切" value={newDeadline} onChange={setNewDeadline} type="date" />
       <TextField label="担当者" value={newPerson} onChange={setNewPerson} type="text" />
-      <button className="border bg-cyan-400">追加</button>
-      <p>{newTask}</p>
-      <p>{newDeadline}</p>
-      <p>{newPerson}</p>
-      <TodoList />
+      <button className="border bg-cyan-400" onClick={addNewTodo}>追加</button>
+      <TodoList todoList={todoList} />
     </main>
   );
 };
