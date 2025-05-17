@@ -1,7 +1,6 @@
 import * as React from "react"
-import { Heading } from "../parts/Heading"
 import { TextField } from "../parts/TextField"
-import { Todo } from "../../App";
+import { Todo } from "./type";
 
 type Props = {
   setTodoList:  React.Dispatch<React.SetStateAction<Todo[]>>;
@@ -29,30 +28,31 @@ export const NewTodoForm = ({ setTodoList }: Props) => {
   };
 
   return (
-    <>
-      <Heading level="h1">TODO</Heading>
+    <div className="flex gap-x-5 items-center justify-center">
       <TextField
+        id="new-task"
         label="タスク名"
         value={newTask}
         onChange={setNewTask}
         type="text"
       />
       <TextField
+        id="new-deadline"
         label="締切"
         value={newDeadline}
         onChange={setNewDeadline}
         type="date"
       />
       <TextField
+        id="new-person"
         label="担当者"
         value={newPerson}
         onChange={setNewPerson}
         type="text"
       />
-      <button className="border bg-cyan-400" onClick={addNewTodo}>
+      <button className="border bg-cyan-400 p-4" onClick={addNewTodo}>
         追加
       </button>
-      <TodoList todoList={todoList} />
-    </>
+    </div>
   )
 }

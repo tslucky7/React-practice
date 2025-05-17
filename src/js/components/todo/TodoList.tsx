@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TodoItem } from "./TodoItem";
-import { Todo } from "../../App";
+import { Todo } from "./type";
 
 type Props = {
   todoList: Todo[];
@@ -8,7 +8,7 @@ type Props = {
 
 export const TodoList = ({ todoList }: Props) => {
   return (
-    <ul className="mt-4 ml-4 bg-emerald-100 p-4 rounded">
+    <ul className="bg-emerald-100 p-4 rounded">
       <li className="grid grid-cols-3 font-bold">
         <div>タスク名</div>
         <div>締切</div>
