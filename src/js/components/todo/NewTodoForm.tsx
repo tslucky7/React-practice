@@ -1,6 +1,6 @@
 import * as React from "react"
 import { TextField } from "../parts/TextField"
-import { Todo } from "../../App";
+import { Todo } from "./type";
 
 type Props = {
   setTodoList:  React.Dispatch<React.SetStateAction<Todo[]>>;

@@ -2,13 +2,7 @@ import * as React from "react";
 import { TodoList } from "./components/todo/TodoList";
 import { Heading } from "./components/parts/Heading";
 import { NewTodoForm } from "./components/todo/NewTodoForm";
-
-export type Todo = {
-  id: number;
-  task: string;
-  deadline: string;
-  person: string;
-};
+import { Todo } from "./components/todo/type";
 
 export const App = () => {
   const [todoList, setTodoList] = React.useState<Todo[]>([]);
