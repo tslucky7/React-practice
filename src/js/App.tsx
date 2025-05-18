@@ -3,9 +3,18 @@ import { TodoList } from "./components/todo/TodoList";
 import { Heading } from "./components/parts/Heading";
 import { NewTodoForm } from "./components/todo/NewTodoForm";
 import { Todo } from "./components/todo/type";
+import { useEffect } from "react";
 
 export const App = () => {
   const [todoList, setTodoList] = React.useState<Todo[]>([]);
+
+  useEffect(() => {
+    console.log("コンポーネントがマウントされた時とtodoListが更新された時に実行される");
+
+    return () => {
+      console.log("コンポーネントがアンマウントされる時に実行される");
+    };
+  }, [todoList]);
 
   return (
     <main className="my-0 mx-auto w-3/4 text-center">
