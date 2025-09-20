@@ -10,7 +10,6 @@ export const App = () => {
   const [count, setCount] = React.useState<number>(0);
   useEffect(() => {
     console.log("コンポーネントがマウントされた時とtodoListが更新された時に実行される");
-
     // クリーンアップ関数の例
     // return () => {
     //   console.log("コンポーネントがアンマウントされる時に実行される");
