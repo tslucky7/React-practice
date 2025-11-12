@@ -9,10 +9,11 @@ type Props = {
 export const TodoList = ({ todoList }: Props) => {
   return (
     <ul className="bg-emerald-100 p-4 rounded">
-      <li className="grid grid-cols-3 font-bold">
+      <li className="grid grid-cols-4 font-bold">
         <div>タスク名</div>
         <div>締切</div>
         <div>担当者</div>
+        <div>削除</div>
       </li>
       {todoList.map((todo) => (
         <TodoItem

@@ -7,25 +7,23 @@ import { useEffect } from "react";
 
 export const App = () => {
   const [todoList, setTodoList] = React.useState<Todo[]>([]);
-  const [count, setCount] = React.useState<number>(0);
+
+  // マウント時に、LocalStorageからtodo一覧のデータを取得する
   useEffect(() => {
-    console.log("コンポーネントがマウントされた時とtodoListが更新された時に実行される");
-    // クリーンアップ関数の例
-    // return () => {
-    //   console.log("コンポーネントがアンマウントされる時に実行される");
-    // };
-  }, [todoList]);
+    const todoListData = localStorage.getItem("todo-list");
+    if (todoListData) {
+      setTodoList(JSON.parse(todoListData))
+    }
+  }, [])
+
+  // todoListが更新されるたびに、LocalStorageにデータを保存する
+  useEffect(() => {
+    localStorage.setItem("todo-list", JSON.stringify(todoList));
+  }, [todoList]); // 依存配列
 
   return (
     <main className="my-0 mx-auto w-3/4 text-center">
       <Heading level="h1">TODO</Heading>
-      <div className="mt-6">
-        <Heading level="h2">カウント</Heading>
-        <div className="mt-8">
-          <p>{count}</p>
-          <button onClick={() => setCount(count + 1)}>カウントアップ</button>
-        </div>
-      </div>
       <div className="mt-6">
         <Heading level="h2">新規TODO作成</Heading>
         <div className="mt-8">
