@@ -30,5 +30,9 @@ export const useTodoList = () => {
     ]);
   }
 
-  return { todoList, setTodoList, addTodo }
+  const deleteTodo = (id: number) => {
+    setTodoList((prev) => prev.filter((todo) => todo.id !== id))
+  }
+
+  return { todoList, addTodo, deleteTodo }
 };

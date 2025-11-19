@@ -5,7 +5,7 @@ import { NewTodoForm } from "./components/todo/NewTodoForm";
 import { useTodoList } from "./components/todo/use-todo-list";
 
 export const App = () => {
-  const { todoList, setTodoList, addTodo } = useTodoList();
+  const { todoList, addTodo, deleteTodo } = useTodoList();
 
   return (
     <main className="my-0 mx-auto w-3/4 text-center">
@@ -19,7 +19,7 @@ export const App = () => {
       <div className="mt-10">
         <Heading level="h2">TODO一覧</Heading>
         <div className="mt-8">
-          <TodoList todoList={todoList} setTodoList={setTodoList} />
+          <TodoList todoList={todoList} deleteTodo={deleteTodo} />
         </div>
       </div>
     </main>
