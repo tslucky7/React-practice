@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Todo } from "./type";
 import { Button } from "../parts/Button";
+import { useTimer } from "./use-timer";
 
-type TodoItemProps = {
+type Props = {
   id: number;
   task: string;
   person: string;
@@ -11,8 +11,8 @@ type TodoItemProps = {
 };
 
 
-export const TodoItem: React.FC<TodoItemProps> = ({ id, task, deadline, person, deleteTodo }) => {
-
+export const TodoItem = ({ id, task, deadline, person, deleteTodo }: Props) => {
+  const { time } = useTimer();
   return (
     <li className="grid grid-cols-4	">
       <div className="">{task}</div>
@@ -20,6 +20,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ id, task, deadline, person, 
       <div className="">{deadline}</div>
       <div>
         <Button onClick={() => deleteTodo(id)} color="red">削除</Button>
+        <div className="">タイマー：{time}秒</div>
       </div>
     </li>
   );
