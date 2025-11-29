@@ -1,6 +1,5 @@
 import * as React from "react"
 import { TextField } from "../parts/TextField"
-import { Todo } from "./type";
 import { Button } from "../parts/Button";
 
 type Props = {
