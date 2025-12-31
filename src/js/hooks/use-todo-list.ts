@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Todo } from "./type";
+import { Todo } from "../types/todo";
 import { useEffect } from "react";
 
 export const useTodoList = () => {
@@ -9,9 +9,9 @@ export const useTodoList = () => {
   useEffect(() => {
     const todoListData = localStorage.getItem("todo-list");
     if (todoListData) {
-      setTodoList(JSON.parse(todoListData))
+      setTodoList(JSON.parse(todoListData));
     }
-  }, [])
+  }, []);
 
   // todoListが更新されるたびに、LocalStorageにデータを保存する
   useEffect(() => {
@@ -28,11 +28,11 @@ export const useTodoList = () => {
         person: newPerson,
       },
     ]);
-  }
+  };
 
   const deleteTodo = (id: number) => {
-    setTodoList((prev) => prev.filter((todo) => todo.id !== id))
-  }
+    setTodoList((prev) => prev.filter((todo) => todo.id !== id));
+  };
 
-  return { todoList, addTodo, deleteTodo }
+  return { todoList, addTodo, deleteTodo };
 };
