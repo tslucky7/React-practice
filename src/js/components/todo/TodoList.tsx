@@ -1,8 +1,6 @@
 import * as React from "react";
 import { TodoItem } from "./TodoItem";
-import { Todo } from "./type";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { Todo } from "../../types/todo";
 
 type Props = {
   todoList: Todo[];
@@ -10,7 +8,6 @@ type Props = {
 };
 
 export const TodoList = ({ todoList, deleteTodo }: Props) => {
-  const { isLoggedIn } = useContext(AuthContext);
   return (
     <>
       <ul className="bg-emerald-100 p-4 rounded">
@@ -27,10 +24,10 @@ export const TodoList = ({ todoList, deleteTodo }: Props) => {
             task={todo.task}
             deadline={todo.deadline}
             person={todo.person}
-            deleteTodo={deleteTodo} />
+            deleteTodo={deleteTodo}
+          />
         ))}
       </ul>
-      <div>{isLoggedIn ? "ログイン中" : "ログアウト中"}</div>
     </>
   );
 };
