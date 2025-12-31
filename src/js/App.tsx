@@ -4,15 +4,14 @@ import { Heading } from "./components/parts/Heading";
 import { NewTodoForm } from "./components/todo/NewTodoForm";
 import { useTodoList } from "./components/todo/use-todo-list";
 import { useTimer } from "./components/todo/use-timer";
-import { useContext } from "react";
-import { AuthContext } from "./contexts/AuthContext";
 import { Button } from "./components/parts/Button";
 import { TextField } from "./components/parts/TextField";
+import { useAuth } from "./contexts/use-auth";
 
 export const App = () => {
   const { todoList, addTodo, deleteTodo } = useTodoList();
   const { time } = useTimer();
-  const { isLoggedIn, setIsLoggedIn, userName, setUserName } = useContext(AuthContext);
+  const { isLoggedIn, login, logout, userName, setUserName } = useAuth();
 
   if (!isLoggedIn) {
     return (
@@ -27,7 +26,7 @@ export const App = () => {
             onChange={setUserName}
           />
           <Button
-            onClick={() => setIsLoggedIn(true)}
+            onClick={login}
             color="blue"
           >
             ログイン
@@ -44,7 +43,7 @@ export const App = () => {
       <div>{isLoggedIn ? `ようこそ、${userName}さん` : "ログアウト中"}</div>
       <div>
         <Button
-          onClick={() => setIsLoggedIn(false)}
+          onClick={logout}
           color="red"
         >
           ログアウト
